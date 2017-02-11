@@ -26,6 +26,10 @@ AnacondaはPython3版とPython2版があります．Python3版にしましょう
     * Windows: ファイルを右クリックしたらインストールできます．
     * Mac: ファイルを~/Library/Fontsの中にコピペします．
   * このフォントは，日本語を含む刺激呈示や作図に使用します．
+* [ANOVA君](http://riseki.php.xdomain.jp/index.php?ANOVA%E5%90%9B)
+  * ページ中上段，"anovakun_◯◯◯.txt"をダウンロードしておいてください．
+  * ANOVA君はRで分散分析をラクラク行うための関数です．
+  * これがあまりに使いやすいため，今回はPythonからRを呼び出して無理やり分散分析することにします．
 
 ## 1.2. 初期設定
 
