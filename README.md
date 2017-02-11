@@ -101,11 +101,12 @@ JupyterがRを利用できるようにします．<br>
   * Windowsの場合，Rを**管理者権限で**起動します (間違ってるかも．確認します)
   * Macの場合，**ターミナルから**Rを起動します．
 2. 以下を実行する (参考: [IRkernel/IRkernel](https://github.com/IRkernel/IRkernel))
-  ```
-  install.packages(c('repr', 'IRdisplay', 'crayon', 'pbdZMQ', 'devtools'))
-  devtools::install_github('IRkernel/IRkernel')
-  IRkernel::installspec()
-  ```
+
+```
+install.packages(c('repr', 'IRdisplay', 'crayon', 'pbdZMQ', 'devtools'))
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()
+```
 
 #### 2.3.3. Python2環境の準備
 
