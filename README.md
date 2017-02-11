@@ -1,6 +1,8 @@
-# 1. 事前準備
+# Pythonで心理学実験・分析
 
-## 1.1. インストール
+## 事前準備
+
+### 1.1. インストール
 
 実験にはPsychoPy，分析にはAnacondaを使います．また，日本語利用にIPAexゴシックを用います．
 
@@ -8,17 +10,17 @@ PsychoPyはPython製の実験ソフトです．Anacondaは分析環境が全て�
 
 AnacondaはPython3版とPython2版があります．Python3版にしましょう (どっちでも問題ありませんが，今からわざわざ2系を使う積極的な理由はほぼありません)．
 
-### Windows
+#### Windows
 
 * [Portable PsychoPy](http://www.s12600.net/psy/etc/python.html)
 * [Anaconda](https://www.continuum.io/downloads#windows)
 
-### Mac
+#### Mac
 
 * [PsychoPy](http://psychopy.org/installation.html)
 * [Anaconda](https://www.continuum.io/downloads#osx)
 
-### 共通
+#### 共通
 
 * [IPAexフォント](http://ipafont.ipa.go.jp/node26#jp)
   * ページ下段，"IPAexゴシック"のzipファイルをダウンロードしておいてください．
@@ -31,13 +33,13 @@ AnacondaはPython3版とPython2版があります．Python3版にしましょう
   * ANOVA君はRで分散分析をラクラク行うための関数です．
   * これがあまりに使いやすいため，今回はPythonからRを呼び出して無理やり分散分析することにします．
 
-## 1.2. 初期設定
+### 1.2. 初期設定
 
-### PsychoPy
+#### PsychoPy
 
 PsychoPy Builderが起動するようにしておいてください．
 
-### Jupyter Notebook
+#### Jupyter Notebook
 
 Jupyter NotebookはPyhton/R/Julia/その他諸々の言語における分析用の開発環境で，Anacondaをインストールした時点ですでに利用可能な状態になっています．
 
@@ -45,14 +47,14 @@ Jupyter Notebookを起動し，ブラウザで以下のような画面が立ち�
 
 ![fig1.1](images/fig1.1.png)
 
-## 1.3. Jupyterの追加設定
+### 1.3. Jupyterの追加設定
 
 ここから先は，可能であれば設定しておいてください．
 当日インストールする時間を設けるつもりではいますが，一気に全員がやると回線が辛いかもしれないので．
 
 WindowsユーザーはAnaconda Promptを起動してください．Macユーザーはターミナルを起動してください．
 
-### 1.3.1. Rとの連携
+#### 1.3.1. Rとの連携
 
 Python内部でRを実行できるようにします．
 以下を実行してください．
@@ -66,8 +68,7 @@ conda install rpy2
 ```
 conda install -c r rpy2
 ```
-
-### 1.3.2. Python2環境の準備
+#### 1.3.2. Python2環境の準備
 
 Anacondaは複数の仮想環境を作成することができ，これにより，2系Pythonと3系Pythonを使い分けることができます．
 2系Pythonの導入によって，Jupyter Notebook上でPsychoPyライブラリが利用できるようになります．
@@ -89,3 +90,11 @@ source activate python2
 pip install --upgrade pip
 pip install psychopy
 ```
+
+## 2. 概要
+
+### 2.1. 導入
+
+* [2.1.1. Pythonの基本](introduction/1.Pythonの基本.ipynb)
+* [2.1.2. 心理学実験のための知識](introduction/2.心理学実験のための知識.ipynb)
+* [2.1.3. PsychoPyの主な機能](introduction/3.PsychoPyの主な機能.ipynb)
