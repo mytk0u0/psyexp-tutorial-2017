@@ -81,7 +81,7 @@ Jupyter Notebookを起動し，ブラウザで以下のような画面が立ち�
 
 WindowsユーザーはAnaconda Promptを起動してください．Macユーザーはターミナルを起動してください．
 
-#### 2.3.1. Rとの連携
+#### 2.3.1. Rとの連携 (1)
 
 Python内部でRを実行できるようにします．
 以下を実行してください．
@@ -90,12 +90,24 @@ Python内部でRを実行できるようにします．
 conda install rpy2
 ```
 
-パッケージが見つからないと言われる場合，次のように設定する必要があるかもしれません．
+#### 2.3.2. Rとの連携 (2)
 
-```
-conda install -c r rpy2
-```
-#### 2.3.2. Python2環境の準備
+JupyterがRを利用できるようにします．<br>
+(Jupyter上のPythonコードの中でRが動くのではなく，RそのものがJupyterで動くようになります)
+
+以下を実行してください．
+
+1. Rを起動する
+  * Windowsの場合，Rを**管理者権限で**起動します (間違ってるかも．確認します)
+  * Macの場合，**ターミナルから**Rを起動します．
+2. 以下を実行する (参考: [IRkernel/IRkernel](https://github.com/IRkernel/IRkernel))
+  ```
+  install.packages(c('repr', 'IRdisplay', 'crayon', 'pbdZMQ', 'devtools'))
+  devtools::install_github('IRkernel/IRkernel')
+  IRkernel::installspec()
+  ```
+
+#### 2.3.3. Python2環境の準備
 
 Anacondaは複数の仮想環境を作成することができ，これにより，2系Pythonと3系Pythonを使い分けることができます．
 2系Pythonの導入によって，Jupyter Notebook上でPsychoPyライブラリが利用できるようになります．
@@ -109,6 +121,8 @@ conda create -n python2 python=2 anaconda
 その後Jupyter Notebookを起動すると，Python2が利用できるようになっています．
 
 ![fig1.2](images/fig1.2.png)
+
+(手順2.3.2を実行している場合は，"R"も表示されます)
 
 その後，再びターミナルに戻り，以下3行を実行してください．
 
