@@ -2,7 +2,7 @@
 
 ## 1.1. インストール
 
-実験にはPsychoPy，分析にはAnacondaを使います．
+実験にはPsychoPy，分析にはAnacondaを使います．また，日本語利用にIPAexゴシックを用います．
 
 PsychoPyはPython製の実験ソフトです．Anacondaは分析環境が全て整ったPythonみたいなものです (HAD付きExcelとか，PsychoToolBox付きMatlabみたいなもの)．
 
@@ -17,6 +17,15 @@ AnacondaはPython3版とPython2版があります．Python3版にしましょう
 
 * [PsychoPy](http://psychopy.org/installation.html)
 * [Anaconda](https://www.continuum.io/downloads#osx)
+
+### 共通
+
+* [IPAexフォント](http://ipafont.ipa.go.jp/node26#jp)
+  * ページ下段，"IPAexゴシック"のzipファイルをダウンロードしておいてください．
+  * 可能であれば，zipを展開し，中の"ipaexg.ttf"にフォントパスを通しておいてください．
+    * Windows: ファイルを右クリックしたらインストールできます．
+    * Mac: ファイルを~/Library/Fontsの中にコピペします．
+  * このフォントは，日本語を含む刺激呈示や作図に使用します．
 
 ## 1.2. 初期設定
 
