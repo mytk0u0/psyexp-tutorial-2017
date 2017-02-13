@@ -53,10 +53,10 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
   * 次に，zipを展開し，中の"ipaexg.ttf"にフォントパスを通してください．
     * Windows: ファイルを右クリックしたらインストールできます．
     * Mac: ファイルを~/Library/Fontsの中にコピペします．
-  * 最後に，
-    1. ホームディレクトリ (WindowsならC://Users/ユーザー名) に移動します (Anaconda2があるディレクトリです)．
-    2. 「.matplotlib」というディレクトリを作成します．
-    3. そのディレクトリの中に，「matplotlibrc」というファイルを作成し「font.family : IPAexGothic」とだけ書いておきます．
+  * 最後に，以下を順番に実行します (Win/Mac共通)．
+    * 「Anaconda2」があるディレクトリに移動します．
+    * 「.matplotlib」というディレクトリに移動します (なければ作ってから入ります)．
+    * 「matplotlibrc」というファイルを作成し，「font.family : IPAexGothic」と書き保存します．
   * このフォントは，日本語を含む刺激呈示や作図に使用します．
 * [ANOVA君](http://riseki.php.xdomain.jp/index.php?ANOVA%E5%90%9B)
   * ページ中上段，"anovakun_◯◯◯.txt"をダウンロードしてください．
