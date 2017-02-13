@@ -74,20 +74,58 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
 
 Jupyter Notebookを起動できるかどうか確認してください．
 
-* Windowsなら，スタートメニューの中に「Jupyter Notebook」があるはずです．
+* Windowsなら，以下の2つの方法で起動できます．
+  1. スタートメニューの中の「Jupyter Notebook」をクリックします．
+  2. スタートメニューの中の「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
 * Macなら，以下の2つの方法で起動できます．
-  * 「Anaconda Navigator」を開き，「Jupyter Notebook」をクリック．
-  * ターミナルを開き，「jupyter notebook」を入力 (**オススメ!**)．
+  1. 「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
+  2. ターミナルを開き，「jupyter notebook」を入力します (**オススメ!**)．
 
 うまく起動すると，ブラウザが立ち上がり，以下のような画面が表示されます．
 
-![起動画面](menu-screenshot.png)
+![起動画面](screenshot/img1.png)
 
 ### 3.2. 追加設定
 
-WindowsユーザーはAnaconda Promptを起動してください．Macユーザーはターミナルを起動してください．
-その後，以下を実行します．
+WindowsユーザーはAnaconda Promptを起動してください．<br>
+Macユーザーはターミナルを起動してください．
+
+その後，以下を入力してください．
 
 ```
-conda install psychopy
+pip install pyglet psychopy
 ```
+
+PsychoPyと一緒にインストールしたPygletは，PsychoPyが裏で動かしている描画ライブラリです．
+
+## 4. Rとの連携
+
+ここから先は本編とは一切関係ありませんが，せっかくJupyterでRが使えるのでざっくり説明します ([参考](https://irkernel.github.io/installation/))
+
+### 4.1. Windows
+
+まずはRと，対応するバージョンのRtoolsをインストールします．
+
+1. https://cran.ism.ac.jp/ から「Download R for Windows」を開き，baseとRtoolsをダウンロードしインストールしてください．
+2. Rを**管理者権限で開き**，以下を実行してください．
+
+```
+install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()
+```
+
+### 4.2. Mac
+
+1. https://cran.ism.ac.jp/ から「Download R for Mac」を開き，最新のpkgをダウンロードしインストールしてください．
+2. Rを**ターミナルから開き**，以下を実行してください．
+
+```
+install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
+devtools::install_github('IRkernel/IRkernel')
+IRkernel::installspec()
+```
+
+うまくいけば，Jupyter Notebook右上「New」からRが選択できるようになっているハズです．
+
+![起動画面](screenshot/img2.png)
