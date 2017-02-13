@@ -34,7 +34,7 @@ Stroop課題の結果 (ダミー) を分析します．
 
 **[Anaconda](https://www.continuum.io/)**をインストールしておいてください．<br>
 Anacondaとは分析環境が全て整ったPythonみたいなものです．<br>
-(HAD付きExcelとか，PsychoToolBox付きMatlabみたいなもの)．
+(HAD付きExcelとか，PsychToolBox付きMatlabみたいなもの)．
 
 実験作成と分析には，Anacondaについてくる**Jupyter Notebook**という開発環境を使います．<br>
 
@@ -96,15 +96,14 @@ Macユーザーはターミナルを起動してください．
 pip install pyglet psychopy
 ```
 
-PsychoPyと一緒にインストールしたPygletは，PsychoPyが裏で動かしている描画ライブラリです．
+* pipはPythonのパッケージ管理ツールです．
+* PsychoPyと一緒にインストールしたPygletは，PsychoPyが裏で動かしている描画ライブラリです．
 
 ## 4. Rとの連携
 
 ここから先は本編とは一切関係ありませんが，せっかくJupyterでRが使えるのでざっくり説明します ([参考](https://irkernel.github.io/installation/))
 
 ### 4.1. Windows
-
-まずはRと，対応するバージョンのRtoolsをインストールします．
 
 1. https://cran.ism.ac.jp/ から「Download R for Windows」を開き，baseとRtoolsをダウンロードしインストールしてください．
 2. Rを**管理者権限で開き**，以下を実行してください．
