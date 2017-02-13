@@ -8,6 +8,7 @@
 
 PythonとPsychoPyの基本的な使い方です．
 
+* [1.1.0. Pythonとは](introduction/0.Pythonとは.ipynb)
 * [1.1.1. Pythonの基本](introduction/1.Pythonの基本.ipynb)
 * [1.1.2. 心理学実験のための知識](introduction/2.心理学実験のための知識.ipynb)
 * [1.1.3. PsychoPyの主な機能](introduction/3.PsychoPyの主な機能.ipynb)
@@ -27,108 +28,66 @@ Stroop課題の結果 (ダミー) を分析します．
 * [1.3.2. 1要因分析](analysis/2.一致不一致の分析.ipynb)
 * [1.3.3. 2要因分析](analysis/3.色別の分析.ipynb)
 
-## 2. 事前準備
+## 2. インストールするもの
 
-### 2.1. インストール
+### 2.1. 当日まで
 
-実験にはPsychoPy，分析にはAnacondaを使います．また，日本語利用にIPAexゴシックを用います．
+**[Anaconda](https://www.continuum.io/)**をインストールしておいてください．<br>
+Anacondaとは分析環境が全て整ったPythonみたいなものです．<br>
+(HAD付きExcelとか，PsychoToolBox付きMatlabみたいなもの)．
 
-PsychoPyはPython製の実験ソフトです．Anacondaは分析環境が全て整ったPythonみたいなものです (HAD付きExcelとか，PsychoToolBox付きMatlabみたいなもの)．
+実験作成と分析には，Anacondaについてくる**Jupyter Notebook**という開発環境を使います．<br>
 
-AnacondaはPython3版とPython2版があります．Python3版にしましょう (どっちでも問題ありませんが，今からわざわざ2系を使う積極的な理由はほぼありません)．
+なお，AnacondaはPython2版とPython3版があります．**Python2**版にしましょう．<br>
+(本当はPython3版がおすすめなのですが，2系でなければPsychoPyが動きません)
 
-#### Windows
+* [Anaconda for Windows](https://www.continuum.io/downloads#windows)
+* [Anaconda for Mac](https://www.continuum.io/downloads#osx)
 
-* [Portable PsychoPy](http://www.s12600.net/psy/etc/python.html)
-* [Anaconda](https://www.continuum.io/downloads#windows)
+### 2.2. 当日
 
-#### Mac
-
-* [PsychoPy](http://psychopy.org/installation.html)
-* [Anaconda](https://www.continuum.io/downloads#osx)
-
-#### 共通
+これらは当日インストールします．
 
 * [IPAexフォント](http://ipafont.ipa.go.jp/node26#jp)
-  * ページ下段，"IPAexゴシック"のzipファイルをダウンロードしておいてください．
-  * 可能であれば，zipを展開し，中の"ipaexg.ttf"にフォントパスを通しておいてください．
+  * ページ下段，"IPAexゴシック"のzipファイルをダウンロードしてください．
+  * zipを展開し，中の"ipaexg.ttf"にフォントパスを通してください．
     * Windows: ファイルを右クリックしたらインストールできます．
     * Mac: ファイルを~/Library/Fontsの中にコピペします．
   * このフォントは，日本語を含む刺激呈示や作図に使用します．
 * [ANOVA君](http://riseki.php.xdomain.jp/index.php?ANOVA%E5%90%9B)
-  * ページ中上段，"anovakun_◯◯◯.txt"をダウンロードしておいてください．
+  * ページ中上段，"anovakun_◯◯◯.txt"をダウンロードしてください．
   * ANOVA君はRで分散分析をラクラク行うための関数です．
-  * これがあまりに使いやすいため，今回はPythonからRを呼び出して無理やり分散分析することにします．
+  * これがあまりに使いやすいため，分散分析だけはRを用いることにします．
 
-### 2.2. 初期設定
+### 2.3. あると便利
 
-#### PsychoPy
+一応，PsycoPyがあると役に立つかもしれません (使う予定はありません)．
 
-PsychoPy Builderが起動するようにしておいてください．
+* [(Win向け) Portable PsychoPy](http://www.s12600.net/psy/etc/python.html)
+* [(Mac向け) PsychoPy](http://psychopy.org/installation.html)
 
-#### Jupyter Notebook
+## 3. Jupyter Notebookの設定
 
-Jupyter NotebookはPyhton/R/Julia/その他諸々の言語における分析用の開発環境で，Anacondaをインストールした時点ですでに利用可能な状態になっています．
+ここから先は慣れてないと面倒くさいかもしれないので，できる範囲でOKです．
 
-Jupyter Notebookを起動し，ブラウザで以下のような画面が立ち上げられるようにしておいてください．「Jupyter Notebook Anaconda」で検索すると大量のチュートリアルが落ちています．
+### 3.1. 動作確認
 
-![fig1.1](images/fig1.1.png)
+Jupyter Notebookを起動できるかどうか確認してください．
 
-### 2.3. Jupyterの追加設定
+* Windowsなら，スタートメニューの中に「Jupyter Notebook」があるはずです．
+* Macなら，以下の2つの方法で起動できます．
+  * 「Anaconda Navigator」を開き，「Jupyter Notebook」をクリック．
+  * ターミナルを開き，「jupyter notebook」を入力 (**オススメ!**)．
 
-ここから先は，可能であれば設定しておいてください．
-当日インストールする時間を設けるつもりではいますが，一気に全員がやると回線が辛いかもしれないので．
+うまく起動すると，ブラウザが立ち上がり，以下のような画面が表示されます．
+
+![起動画面](menu-screenshot.png)
+
+### 3.2. 追加設定
 
 WindowsユーザーはAnaconda Promptを起動してください．Macユーザーはターミナルを起動してください．
-
-#### 2.3.1. Rとの連携 (1)
-
-Python内部でRを実行できるようにします．
-以下を実行してください．
+その後，以下を実行します．
 
 ```
-conda install rpy2
-```
-
-#### 2.3.2. Rとの連携 (2)
-
-JupyterがRを利用できるようにします．<br>
-(Jupyter上のPythonコードの中でRが動くのではなく，RそのものがJupyterで動くようになります)
-
-以下を実行してください．
-
-1. Rを起動する
-  * Windowsの場合，Rを**管理者権限で**起動します (間違ってるかも．確認します)
-  * Macの場合，**ターミナルから**Rを起動します．
-2. 以下を実行する (参考: [IRkernel/IRkernel](https://github.com/IRkernel/IRkernel))
-
-```
-install.packages(c('repr', 'IRdisplay', 'crayon', 'pbdZMQ', 'devtools'))
-devtools::install_github('IRkernel/IRkernel')
-IRkernel::installspec()
-```
-
-#### 2.3.3. Python2環境の準備
-
-Anacondaは複数の仮想環境を作成することができ，これにより，2系Pythonと3系Pythonを使い分けることができます．
-2系Pythonの導入によって，Jupyter Notebook上でPsychoPyライブラリが利用できるようになります．
-
-以下を実行します．
-
-```
-conda create -n python2 python=2 anaconda
-```
-
-その後Jupyter Notebookを起動すると，Python2が利用できるようになっています．
-
-![fig1.2](images/fig1.2.png)
-
-(手順2.3.2を実行している場合は，"R"も表示されます)
-
-その後，再びターミナルに戻り，以下3行を実行してください．
-
-```
-source activate python2
-pip install --upgrade pip
-pip install psychopy
+conda install psychopy
 ```
