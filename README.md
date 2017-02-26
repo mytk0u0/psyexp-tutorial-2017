@@ -27,6 +27,7 @@ Stroop課題の結果 (ダミー) を分析します．
 * [1.3.1. 前処理](analysis/1.前処理.ipynb)
 * [1.3.2. 1要因分析](analysis/2.一致不一致の分析.ipynb)
 * [1.3.3. 2要因分析](analysis/3.色別の分析.ipynb)
+* [1.3.4. Rとの連携](analysis/4.Rとの連携.ipynb)
 
 ## 2. インストールするもの
 
@@ -78,12 +79,12 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
 
 Jupyter Notebookを起動できるかどうか確認してください．
 
-* Windowsなら，以下の2つの方法で起動できます．
-  1. スタートメニューの中の「Jupyter Notebook」をクリックします．
+* Windowsなら，以下の2つのいずれかの方法で起動できます．
+  1. スタートメニューの中の「Jupyter Notebook」をクリックします (**オススメ!**)．
   2. スタートメニューの中の「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
-* Macなら，以下の2つの方法で起動できます．
-  1. 「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
-  2. ターミナルを開き，「jupyter notebook」を入力します (**オススメ!**)．
+* Macなら，以下の2つのいずれかの方法で起動できます．
+  1. ターミナルを開き，「jupyter notebook」を入力します (**オススメ!**)．
+  2. 「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
 
 うまく起動すると，ブラウザが立ち上がり，以下のような画面が表示されます．
 
