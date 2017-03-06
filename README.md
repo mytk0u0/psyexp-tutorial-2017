@@ -60,13 +60,14 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
     * 「matplotlibrc」というファイルを作成し，「font.family : IPAexGothic」と書き保存します．
   * このフォントは，日本語を含む刺激呈示や作図に使用します．
 * [ANOVA君](http://riseki.php.xdomain.jp/index.php?ANOVA%E5%90%9B)
-  * ページ中上段，"anovakun_◯◯◯.txt"をダウンロードしてください．
-  * ANOVA君はRで分散分析をラクラク行うための関数です．
+  * ページ中上段，"anovakun\_◯◯◯.txt"をダウンロードしてください．
+  * ANOVA君はRで分散分析 (とその他諸々) を楽に行うための関数です．
   * これがあまりに使いやすいため，分散分析だけはRを用いることにします．
+  * 2017年現在，ANOVAに関しては有償ソフトも含めてこれが最優秀だと思います．
 
 ### 2.3. あると便利
 
-一応，PsycoPyがあると役に立つかもしれません (使う予定はありません)．
+一応，PsycoPyがあると役に立つかもしれません (使う予定はありません)．<br>
 
 * [(Win向け) Portable PsychoPy](http://www.s12600.net/psy/etc/python.html)
 * [(Mac向け) PsychoPy](http://psychopy.org/installation.html)
@@ -80,10 +81,10 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
 Jupyter Notebookを起動できるかどうか確認してください．
 
 * Windowsなら，以下の2つのいずれかの方法で起動できます．
-  1. スタートメニューの中の「Jupyter Notebook」をクリックします (**オススメ!**)．
+  1. スタートメニューの中の「Jupyter Notebook」をクリックします (環境によっては落ちるかも)．
   2. スタートメニューの中の「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
 * Macなら，以下の2つのいずれかの方法で起動できます．
-  1. ターミナルを開き，「jupyter notebook」を入力します (**オススメ!**)．
+  1. ターミナルを開き，「jupyter notebook」を入力します (ターミナルが使える人はこっちを使ったほうが絶対楽です)．
   2. 「Anaconda Navigator」を開き，「Jupyter Notebook」をクリックします．
 
 うまく起動すると，ブラウザが立ち上がり，以下のような画面が表示されます．
@@ -98,11 +99,20 @@ Macユーザーはターミナルを起動してください．
 その後，以下を入力してください．
 
 ```
+python -m ipykernel install --user
 pip install pyglet psychopy
 ```
 
+* 1行目はとりあえず魔法の呪文ということで．気になる人は調べてみてください．
 * pipはPythonのパッケージ管理ツールです．
 * PsychoPyと一緒にインストールしたPygletは，PsychoPyが裏で動かしている描画ライブラリです．
+* 本当はpipより優秀なconda (下記) が推奨されますが，今回は簡単のためpipを使っています．もしこだわりがある人はpip installの1行の代わりに以下の3行をコピペしてください．
+
+```
+conda condig --add channels conda-forge
+conda install pyglet
+conda install -c cogsci psychopy
+```
 
 ## 4. Rとの連携
 
