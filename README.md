@@ -2,8 +2,6 @@
 
 ## 1. 目次
 
-(リンク先はPCから開かないとうまく表示されません)
-
 ### 1.1. 導入
 
 PythonとPsychoPyの基本的な使い方です．
@@ -31,7 +29,7 @@ Stroop課題の結果 (ダミー) を分析します．
 
 ## 2. インストールするもの
 
-### 2.1. 当日まで
+### 2.1. Anaconda
 
 **[Anaconda](https://www.continuum.io/)**をインストールしておいてください．<br>
 Anacondaとは分析環境が全て整ったPythonみたいなものです．<br>
@@ -45,36 +43,26 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
 * [Anaconda for Windows](https://www.continuum.io/downloads#windows)
 * [Anaconda for Mac](https://www.continuum.io/downloads#osx)
 
-### 2.2. 当日
+### 2.2. 日本語フォント
 
-これらは当日インストールします．
+チュートリアルでは日本語刺激呈示のために[IPAexフォント](http://ipafont.ipa.go.jp/node26#jp)を使います．次のようにしてインストールしましょう．
 
-* [IPAexフォント](http://ipafont.ipa.go.jp/node26#jp)
-  * ページ下段，"IPAexゴシック"のzipファイルをダウンロードしてください．
-  * 次に，zipを展開し，中の"ipaexg.ttf"にフォントパスを通してください．
-    * Windows: ファイルを右クリックしたらインストールできます．
-    * Mac: ファイルを~/Library/Fontsの中にコピペします．
-  * 最後に，以下を順番に実行します (Win/Mac共通)．
-    * 「Anaconda2」があるディレクトリに移動します．
-    * 「.matplotlib」というディレクトリに移動します (なければ作ってから入ります)．
-    * 「matplotlibrc」というファイルを作成し，「font.family : IPAexGothic」と書き保存します．
-  * このフォントは，日本語を含む刺激呈示や作図に使用します．
-* [ANOVA君](http://riseki.php.xdomain.jp/index.php?ANOVA%E5%90%9B)
-  * ページ中上段，"anovakun\_◯◯◯.txt"をダウンロードしてください．
-  * ANOVA君はRで分散分析 (とその他諸々) を楽に行うための関数です．
-  * これがあまりに使いやすいため，分散分析だけはRを用いることにします．
-  * 2017年現在，ANOVAに関しては有償ソフトも含めてこれが最優秀だと思います．
+* ページ下段，"IPAexゴシック"のzipファイルをダウンロードしてください．
+* 次に，zipを展開し，中の"ipaexg.ttf"にフォントパスを通してください．
+  * Windows: ファイルを右クリックしたらインストールできます．
+  * Mac: ファイルを~/Library/Fontsの中にコピペします．
 
-### 2.3. あると便利
+また，このフォントを作図にも使いたい場合，以下のように設定します．
 
-一応，PsycoPyがあると役に立つかもしれません (使う予定はありません)．<br>
+* 「Anaconda2」があるディレクトリに移動します．
+* 「.matplotlib」というディレクトリに移動します (なければ作ってから入ります)．
+* 「matplotlibrc」というファイルを作成し，「font.family : IPAexGothic」と書き保存します．
 
-* [(Win向け) Portable PsychoPy](http://www.s12600.net/psy/etc/python.html)
-* [(Mac向け) PsychoPy](http://psychopy.org/installation.html)
+### 2.3. ANOVA君
+
+Pythonでは分散分析ができません．したがってRを呼び出して[ANOVA君](http://riseki.php.xdomain.jp/index.php?ANOVA%E5%90%9B)を使うのが良いと思います．
 
 ## 3. Jupyter Notebookの設定
-
-ここから先は慣れてないと面倒くさいかもしれないので，できる範囲でOKです．
 
 ### 3.1. 動作確認
 
@@ -90,6 +78,8 @@ Jupyter Notebookを起動できるかどうか確認してください．
 うまく起動すると，ブラウザが立ち上がり，以下のような画面が表示されます．
 
 ![起動画面](screenshot/img1.png)
+
+なお，Jupyter Notebookはウイルスバスターに引っかかって起動しない場合があります．その場合，Anaconda2フォルダを監視の例外設定に追加してください．
 
 ### 3.2. 追加設定
 
@@ -116,12 +106,9 @@ conda install -c cogsci psychopy
 
 ## 4. Rとの連携
 
-ここから先は本編とは一切関係ありませんが，せっかくJupyterでRが使えるのでざっくり説明します ([参考](https://irkernel.github.io/installation/))
+せっかくJupyterでRが使えるのでざっくり説明します ([参考](https://irkernel.github.io/installation/))
 
-### 4.1. Windows
-
-1. https://cran.ism.ac.jp/ から「Download R for Windows」を開き，baseとRtoolsをダウンロードしインストールしてください．
-2. Rを**管理者権限で開き**，以下を実行してください．
+Rを開いて，以下を実行してください．ただし，実行前に後述の注意書きを読んで下さい．
 
 ```
 install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
@@ -129,16 +116,15 @@ devtools::install_github('IRkernel/IRkernel')
 IRkernel::installspec()
 ```
 
-### 4.2. Mac
+### 4.1. 注意点 (Windows)
+
+1. https://cran.ism.ac.jp/ から「Download R for Windows」を開き，baseと**Rtoolsを**ダウンロードしインストールしておいてください．
+2. Rは**管理者権限で開いてください**
+
+### 4.2. 注意点 (Mac)
 
 1. https://cran.ism.ac.jp/ から「Download R for Mac」を開き，最新のpkgをダウンロードしインストールしてください．
-2. Rを**ターミナルから開き**，以下を実行してください．
-
-```
-install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'))
-devtools::install_github('IRkernel/IRkernel')
-IRkernel::installspec()
-```
+2. Rは**ターミナルから開いてください**，
 
 うまくいけば，Jupyter Notebook右上「New」からRが選択できるようになっているハズです．
 
