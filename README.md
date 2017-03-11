@@ -1,5 +1,9 @@
 # Pythonで心理学実験・分析
 
+心理学実験プログラム・分析スクリプトをPythonコードから作っていきます．
+
+(2017/03/11 [5. 修正](#note)を追記しました)
+
 ## 1. 目次
 
 ### 1.1. 導入
@@ -99,7 +103,7 @@ pip install pyglet psychopy
 * 本当はpipより優秀なconda (下記) が推奨されますが，今回は簡単のためpipを使っています．もしこだわりがある人はpip installの1行の代わりに以下の3行をコピペしてください．
 
 ```
-conda condig --add channels conda-forge
+conda config --add channels conda-forge
 conda install pyglet
 conda install -c cogsci psychopy
 ```
@@ -129,3 +133,17 @@ IRkernel::installspec()
 うまくいけば，Jupyter Notebook右上「New」からRが選択できるようになっているハズです．
 
 ![起動画面](screenshot/img2.png)
+
+## 5. 訂正
+
+<div id="note"></div>
+
+2017/03/10時点で，1.1.2と1.2.1 (実験作成の話) の内容に誤りや複雑な文法が一部含まれていたので，少し修正しました．
+
+### pd.Multiindexとitertools
+
+pd.Multiindexは良いものですが，わかりにくいのでitertoolsを使って書くように訂正しました．
+
+### iterrowsの挙動について
+
+iterrowsは数値を参照渡しし，文字列等を値渡しするようです．ハマりどころ感漂う仕様なので，インデックスを一度reset_indexで解除してからループを回すよう訂正しました．
