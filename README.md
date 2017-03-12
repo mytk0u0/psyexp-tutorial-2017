@@ -31,6 +31,10 @@ Stroop課題の結果 (ダミー) を分析します．
 * [1.3.3. 2要因分析](analysis/3.色別の分析.ipynb)
 * [1.3.4. Rとの連携](analysis/4.Rとの連携.ipynb)
 
+### 1.4. Appendix
+
+* [実験・分析でよく使う操作](appendix.ipynb)
+
 ## 2. インストールするもの
 
 ### 2.1. Anaconda
