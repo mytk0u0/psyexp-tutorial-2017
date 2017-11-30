@@ -2,8 +2,6 @@
 
 心理学実験プログラム・分析スクリプトをPythonコードから作っていきます．
 
-(2017/03/11: 「[5. 訂正](#note)」を追記しました)
-
 ## 1. 目次
 
 ### 1.1. 導入
@@ -41,12 +39,12 @@ Stroop課題の結果 (ダミー) を分析します．
 
 **[Anaconda](https://www.continuum.io/)**をインストールしておいてください．<br>
 Anacondaとは分析環境が全て整ったPythonみたいなものです．<br>
-(HAD付きExcelとか，PsychToolBox付きMatlabみたいなもの)．
+(雑に言えばHAD付きExcelとか，PsychToolBox付きMatlabみたいなもの)．
 
 実験作成と分析には，Anacondaについてくる**Jupyter Notebook**という開発環境を使います．<br>
 
 なお，AnacondaはPython2版とPython3版があります．**Python2**版にしましょう．<br>
-(本当はPython3版がおすすめなのですが，2系でなければPsychoPyが動きません)
+(本当はPython3版がおすすめですが，2系でなければPsychoPyが動きません)
 
 * [Anaconda for Windows](https://www.continuum.io/downloads#windows)
 * [Anaconda for Mac](https://www.continuum.io/downloads#osx)
@@ -60,7 +58,7 @@ Anacondaとは分析環境が全て整ったPythonみたいなものです．<br
   * Windows: ファイルを右クリックしたらインストールできます．
   * Mac: ファイルを~/Library/Fontsの中にコピペします．
 
-また，このフォントを作図にも使いたい場合，以下のように設定します．
+また，このフォントを作図にも使いたい場合，以下のように設定します (分析はRで，という人は読み飛ばしてください)．
 
 * 「Anaconda2」があるディレクトリに移動します．
 * 「.matplotlib」というディレクトリに移動します (なければ作ってから入ります)．
@@ -98,19 +96,17 @@ Macユーザーはターミナルを起動してください．
 
 ```
 python -m ipykernel install --user
-pip install pyglet psychopy
+pip install pyglet pygame psychopy configobj
 ```
 
-* 1行目はとりあえず魔法の呪文ということで．気になる人は調べてみてください．
+* 1行目はとりあえず，jupyter notebookを使えるようにする魔法の呪文ということで．気になる人は調べてみてください．
 * pipはPythonのパッケージ管理ツールです．
-* PsychoPyと一緒にインストールしたPygletは，PsychoPyが裏で動かしている描画ライブラリです．
-* 本当はpipより優秀なconda (下記) が推奨されますが，今回は簡単のためpipを使っています．もしこだわりがある人はpip installの1行の代わりに以下の3行をコピペしてください．
+* PsychoPyと一緒にインストールしたPygletとPygameは，PsychoPyが裏で動かしている描画ライブラリです．
+* configobjはPsychoPyの一部のモジュールの使用に必要なので入れています．
+* ここらへんのインストール方法は様々です．pipの代わりにcondaを使っても，また併用しても良いと思います．
+* もし今後，プログラム実行時に`No module named '◯◯'`が表示された場合，大抵は`pip install ◯◯`で解決します．
+  * `pip install`時の名前とインポート時の名前が異なる場合もありますが，ググればすぐに`pip install`すべきパッケージ名が分かるはずです．
 
-```
-conda config --add channels conda-forge
-conda install pyglet
-conda install -c cogsci psychopy
-```
 
 ## 4. Rとの連携
 
@@ -138,26 +134,49 @@ IRkernel::installspec()
 
 ![起動画面](screenshot/img2.png)
 
-## 5. 訂正
+## 5. ハマりどころ
 
-<div id="note"></div>
+### 呈示したウィンドウが「応答なし」になる
 
-2017/03/10時点で，1.1.2と1.2.1 (実験作成の話)，1.3.1 (分析の話) の内容に誤りや複雑な文法が一部含まれていたので，少し修正しました．
+* 無視して良いです．ちゃんと刺激は呈示されます．
 
-### pd.Multiindexとitertools
+### 出力ファイルをExcelで開くと文字化けする
 
-pd.Multiindexは良いものですが，わかりにくいのでitertoolsを使って書くように訂正しました．
+Excelは何故かShift-JISでファイルを開こうとします．以下のいずれかの方法で対策してください．
 
-### iterrowsの挙動について
+1. Excelは使わない．
+2. `df.to_csv(filename, encoding='Shitf-JIS')`のように，ファイル出力時のエンコーディングを変える．
+    * Excelで分析したいなら一番楽．
+    * この対策をとった場合，RやPythonでcsvを読む際にエンコーディングを指定する必要がある．
+3. Excelを開いて，`データ` -> `外部データの取り込み` -> `テキストファイル`で，UTF-8を選択して開く．
 
-iterrowsは数値を参照渡しし，文字列等を値渡しするようです．ハマりどころ感漂う仕様なので，インデックスを一度reset_indexで解除してからループを回すよう訂正しました．
+### 時間制御が不安
 
-### Python2 × Pandasにおける日本語のif
+正確な時間制御が必要な場合，呈示時間ではなく呈示フレーム数で指定すれば良いです．例えば60Hzのディスプレイで，
 
-途中「df['text'] == '赤'」が全部Falseになるというトラブルがあったと思いますが，あれは
+```python
+for i in range(6):
+    something_to_draw.draw()
+    win.flip()
+```
 
-* 「b'赤'」と書く
-* pd.read_csv時に「encoding='utf-8'」を指定する
+は，
 
-で解決します．後者のほうがベターなのでそっちの方法を使うよう修正しました．<br>
-(そもそも，\_\_future\_\_からunicode\_literalsさえimportしていれば，文字列の前にuとかbとか付ける事態は避けられるハズなので)
+```python
+win.flip()
+core.wait(0.1)
+```
+
+と同じ (しかし正確な) 挙動になります．`win.flip()`は「次のフレームで，予め描画しておいた刺激を呈示する」ので，6回実行すると必ず6フレーム (= 100ms) 呈示になります．
+
+### No module named ◯◯とエラーが出る
+
+単にそのモジュールが入ってないだけです．`pip install ◯◯`で大抵解決します<br>
+
+### UnicodeDecodeError
+
+つらい．原因は色々です．よくあるのは，
+
+* ログインユーザー名に全角文字が混じっている．
+* ファイルパスに全角文字が混じっている．「`Desktop/experiments/実験1/main.py`」の場合もアウト．"実験1"を"exp1"等に修正しましょう．
+* `from __future__ import unicode_liserals`してない．

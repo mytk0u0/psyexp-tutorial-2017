@@ -142,12 +142,12 @@ win.close()
 
 # 2.4. ファイル出力
 filename = 'output/result{}.csv'.format(SUBJECT_ID)
-df.to_csv(filename, encoding='utf-8')  # or shift-JIS
+df.to_csv(filename, encoding='utf-8')  # or shift-JIS for Excel
 
 
 # ちゃんと動作することを「Kernel」→「Restart & Run All」で確認できたら，「File」→「Download as」→「Python (.py)」で保存します．
 # 
-# デフォルトのファイル名「draft.py」はちょっと格好悪いので，適宜「main.py」等にリネームしてください．
+# デフォルトのファイル名「draft.py」はちょっと名前が格好悪いので，適宜「main.py」等にリネームしてください．
 # 
 # 保存したファイルはPsychoPy (ソフトウェアのほう) から開けばすぐに実行できます．<br>
 # あるいはAnacondaに同梱されているSpyderで実行しても良いし，以下のようにして，ターミナルやAnaconda Promptから直接実行しても良いです．
